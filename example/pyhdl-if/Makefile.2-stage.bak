@@ -1,0 +1,28 @@
+_makefile_path := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+
+export VERILATOR_ROOT ?= /home/hongping/verilator
+export PYHDL_IF_SHARE ?= $(shell pyhdl-if share)
+export PYHDL_IF_LIBS ?= $(shell pyhdl-if libs)
+export PYHDL_IF_LIBDIR ?= $(dir $(PYHDL_IF_LIBS))
+export PYTHONPATH ?= $(_makefile_path)
+
+OUTDIR ?= $(_makefile_path)/output
+TARGET ?= $(OUTDIR)/simv
+
+$(OUTDIR)/Vtop.mk: Makefile filelist.f top.sv sample.sv sample_pkg.svh
+	$(VERILATOR_ROOT)/bin/verilator --cc --exe --main --timing \
+	--sched-zero-delay -Wno-WIDTHTRUNC -Mdir $(OUTDIR) -o simv \
+	+incdir+$(PYHDL_IF_SHARE)/dpi $(PYHDL_IF_SHARE)/dpi/pyhdl_if.sv \
+	-f $(_makefile_path)/filelist.f --top-module top
+
+$(TARGET): $(OUTDIR)/Vtop.mk
+	$(MAKE) -C $(OUTDIR) -f Vtop.mk \
+	VM_USER_LDLIBS="-L$(PYHDL_IF_LIBDIR) -Wl,-rpath,$(PYHDL_IF_LIBDIR) -lpyhdl_if -Wl,--export-dynamic"
+
+run: $(TARGET)
+	@$(TARGET)
+
+clean:
+	rm -rf $(OUTDIR)
+
+.PHONY: run all clean
