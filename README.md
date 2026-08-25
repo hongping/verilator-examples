@@ -11,7 +11,18 @@ Small SystemVerilog examples built and run with [Verilator](https://verilator.or
 
 - Set `VERILATOR_ROOT` to Verilator installation directory.
 - GNU Make.
-- For `example/pyhdl-if`, install `pyhdl-if` and ensure the `pyhdl-if` command is available on `PATH`.
+- [`uv`](https://docs.astral.sh/uv/) for running IVPM.
+
+## Set up dependencies
+
+This repository uses [`ivpm`](https://github.com/fvutils/ivpm) to pull and assemble its dependencies. From the repository root, run:
+
+```sh
+uvx ivpm sync
+source packages/python/bin/activate
+```
+
+The `source` command is for Bash. IVPM is only needed for examples that use dependencies declared in `ivpm.yaml`; standalone examples such as `example/helloworld` can be run without this setup.
 
 ## Run an example
 

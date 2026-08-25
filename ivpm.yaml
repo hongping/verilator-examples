@@ -1,0 +1,18 @@
+$schema: https://fvutils.github.io/ivpm/ivpm.schema.json
+
+package:
+   name: verilator-examples
+   version: "0.1.0"
+
+   with:
+    python:
+      venv: uv
+
+   dep-sets:
+    - name: default
+      deps:
+        - name: pyhdl-if
+          src: pypi
+        - name: uvm
+          url: https://github.com/accellera-official/uvm-core.git
+          ssh: false
