@@ -2,5 +2,6 @@ __pycache__
 .agents
 .claude
 .cursor
+.sigasi
 output
 packages

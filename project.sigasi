@@ -1,0 +1,78 @@
+{
+    "name": "verilator examples",
+    "targets": {
+        "uvm example": {
+            "directory": "example/uvm",
+            "libraryMapping": {
+                "": "work"
+            },
+            "verilogPreprocessor": {
+                "includeDirectories": [
+                    "../../packages/uvm/src"
+                ]
+            },
+            "dependencies": [
+                {
+                    "verilator examples": {
+                        "version": "default",
+                        "targets": [
+                            "uvm"
+                        ]
+                    }
+                }
+            ]
+        },
+        "pyhdl-if example": {
+            "directory": "example/pyhdl-if",
+            "libraryMapping": {
+                "": "work"
+            },
+            "languageMapping": {
+                "systemverilogSuffix": [ ".sv", ".svh" ]
+            },
+            "verilogPreprocessor": {
+                "includeDirectories": [
+                    "../../packages/python/lib64/python3.12/site-packages/hdl_if/share/dpi"
+                ]
+            },
+            "dependencies": [
+                {
+                    "verilator examples": {
+                        "version": "default",
+                        "targets": [
+                            "pyhdl-if dpi"
+                        ]
+                    }
+                }
+            ]
+        },
+        "uvm": {
+            "directory": "packages/uvm/src",
+            "libraryMapping": {
+                "": "work"
+            },
+            "verilogPreprocessor": {
+                "includeDirectories": [
+                    ""
+                ]
+            }
+        },
+        "pyhdl-if dpi": {
+            "directory": "packages/python/lib64/python3.12/site-packages/hdl_if/share/dpi",
+            "libraryMapping": {
+                "": "work"
+            },
+            "verilogPreprocessor": {
+                "includeDirectories": [
+                    ""
+                ]
+            }
+        },
+        "q-channel example": {
+            "directory": "example/q-channel",
+            "libraryMapping": {
+                "": "work"
+            }
+        }
+    }
+}

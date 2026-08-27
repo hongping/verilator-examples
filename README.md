@@ -11,7 +11,14 @@ Small SystemVerilog examples built and run with [Verilator](https://verilator.or
 
 - Set `VERILATOR_ROOT` to Verilator installation directory.
 - GNU Make.
+- Clang, including `clang++`, for compiling the UVM example.
 - [`uv`](https://docs.astral.sh/uv/) for running IVPM.
+
+On Debian or Ubuntu, install Clang with:
+
+```sh
+sudo apt install clang
+```
 
 ## Set up dependencies
 
