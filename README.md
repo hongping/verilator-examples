@@ -4,8 +4,9 @@ Small SystemVerilog examples built and run with [Verilator](https://verilator.or
 
 ## Examples
 
-- `example/helloworld` prints `Hello World` from a SystemVerilog testbench.
+- `example/.template` basic setup to run Verilator simulation.
 - `example/pyhdl-if` demonstrates calling Python code from SystemVerilog through [`pyhdl-if`](https://github.com/fvutils/pyhdl-if), including simulated delays and simulation-time queries.
+- `example/uvm` demonstrates simple UVM simulation which exercise simple UVM environment only.
 
 ## Prerequisites
 
@@ -36,7 +37,7 @@ The `source` command is for Bash. IVPM is only needed for examples that use depe
 From the repository root:
 
 ```sh
-cd example/helloworld
+cd example/uvm
 make run
 ```
 
